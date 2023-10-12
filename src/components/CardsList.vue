@@ -6,6 +6,10 @@
       v-for="card in cardsList"
       :key="card.id"
       :itemObj="card"
+      @move="$emit('move', card)"
+      @delete="$emit('delete', card)"
+      :buttonText="buttonText"
+      :isHide="isHide"
     >
     </ListItem>
   </ul>
@@ -24,6 +28,18 @@ export default {
     status: {
       type: String,
       default: null
+    },
+    buttonText: {
+      type: String,
+      default: null
+    },
+    buttonType: {
+      type: String,
+      default: null
+    },
+    isHide: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -33,7 +49,7 @@ export default {
 </script>
 <style scoped>
   .list {
-    max-width: 400px;
+    width: 400px;
     margin: 0;
     padding: 10px 20px;
     list-style-type: none;
@@ -44,7 +60,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: top;
     row-gap: 15px;
   }
 
