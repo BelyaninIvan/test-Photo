@@ -6,6 +6,7 @@
       :cardsList="cards"
       @move="moveCard"
       @delete="deleteCard"
+      @openDialog="openDialog"
     >
     </CardsList>
     <CardsList
@@ -26,20 +27,33 @@
     >
     </CardsList>
   </main>
+
+  <MyDialog
+      :show="dialogVisible"
+    >
+      <CreateCardForm
+        @create="createCard"
+      >
+
+      </CreateCardForm>
+    </MyDialog>
 </template>
 
 <script>
   import axios from 'axios';
   import CardsList from '@/components/CardsList.vue';
+  import CreateCardForm from '@/components/CreateCardForm.vue'
   export default {
     components: {
       CardsList,
+      CreateCardForm
     },
     data() {
       return {
         cards: [],
         cards_favourites: [],
         cards_buy: [],
+        dialogVisible: false,
       }
     },
     methods: {
@@ -55,6 +69,13 @@
         this.cards = this.cards.filter(c => c.id != card.id)
         this.cards_favourites = this.cards_favourites.filter(c => c.id != card.id)
         this.cards_buy = this.cards_buy.filter(c => c.id != card.id)
+      },
+      openDialog() {
+        this.dialogVisible = true;
+      },
+      createCard(card) {
+        this.cards.unshift(card);
+        this.dialogVisible = false;
       }
     },
     mounted() {

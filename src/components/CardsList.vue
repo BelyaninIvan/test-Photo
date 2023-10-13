@@ -1,6 +1,9 @@
 <template>
   <ul class="list">
-    <h2 class="list__title">{{ status }} <span class="list__title-span">{{ cardsList.length }}</span></h2>
+    <button class="add-button" @click="$emit('openDialog')"></button>
+    <h2 class="list__title">{{ status }} 
+      <span class="list__title-span">{{ cardsList.length }}</span>
+    </h2>
     
     <ListItem 
       v-for="card in cardsList"
@@ -13,6 +16,8 @@
     >
     </ListItem>
   </ul>
+
+  
 </template>
 <script>
 import ListItem from '@/components/ListItem.vue'
@@ -43,12 +48,18 @@ export default {
     }
   },
   data() {
-    
+    return {
+      
+    }
   },
+  methods: {
+    
+  }
 }
 </script>
 <style scoped>
   .list {
+    position: relative;
     width: 400px;
     margin: 0;
     padding: 10px 20px;
@@ -81,5 +92,27 @@ export default {
     background-color: white;
     padding: 5px;
     color: darkgreen;
+  }
+
+  .add-button {
+    margin: 0;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+    background-image: url('../assets/add.png');
+    background-size: 24px;
+
+    position: absolute;
+    right: 25px;
+    top: 15px;
+    transition: all ease-in .6s;
+  }
+
+  .add-button:hover {
+    opacity: .8;
   }
 </style>

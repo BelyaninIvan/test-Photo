@@ -36,6 +36,7 @@ export default {
   .list__item {
     position: relative;
     margin: 0;
+    min-width: 330px;
     padding: 40px 15px 10px;
     background-color: white;
     border-radius: 20px;
@@ -91,7 +92,7 @@ export default {
 
   .item__text {
     margin: 0;
-    text-align: justify;
+    text-align: center;
     font-weight: 600;
   }
 
