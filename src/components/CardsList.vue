@@ -11,6 +11,7 @@
       :itemObj="card"
       @move="$emit('move', card)"
       @delete="$emit('delete', card)"
+      @openEditDialog="$emit('openEditDialog', itemObj)"
       :buttonText="buttonText"
       :isHide="isHide"
     >

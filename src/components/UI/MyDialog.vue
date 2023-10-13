@@ -36,7 +36,7 @@
 
   .modal__content {
     margin: auto;
-    background-color: rgb(185, 180, 132);
+    background-color: rgb(65, 140, 110);
     border-radius: 20px;
     padding: 25px;
   }

@@ -25,7 +25,7 @@
         width: 85%;
 
         padding: 10px 15px;
-        background-color: rgba(240, 230, 140, 0.5);
+        background-color: rgba(150, 251, 210, 0.5);
         border-radius: 10px;
 
         font-size: 20px;
@@ -34,7 +34,7 @@
     }
 
     .input::placeholder {
-        color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
         opacity: .6;
     }
 </style>

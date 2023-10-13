@@ -7,6 +7,7 @@
       @move="moveCard"
       @delete="deleteCard"
       @openDialog="openDialog"
+      @openEditDialog="openEditDialog"
     >
     </CardsList>
     <CardsList
@@ -29,24 +30,34 @@
   </main>
 
   <MyDialog
-      :show="dialogVisible"
+    :show="dialogVisible"
+  >
+    <CreateCardForm
+      @create="createCard"
     >
-      <CreateCardForm
-        @create="createCard"
-      >
-
-      </CreateCardForm>
-    </MyDialog>
+    </CreateCardForm>
+  </MyDialog>
+  
+  <MyDialog
+    :show="dialogEditVisible"
+  >
+    <EditCardForm
+      @edit="editCard"
+    >
+    </EditCardForm>
+  </MyDialog>
 </template>
 
 <script>
   import axios from 'axios';
   import CardsList from '@/components/CardsList.vue';
-  import CreateCardForm from '@/components/CreateCardForm.vue'
+  import CreateCardForm from '@/components/CreateCardForm.vue';
+  import EditCardForm from '@/components/EditCardForm.vue'
   export default {
     components: {
       CardsList,
-      CreateCardForm
+      CreateCardForm,
+      EditCardForm
     },
     data() {
       return {
@@ -54,6 +65,7 @@
         cards_favourites: [],
         cards_buy: [],
         dialogVisible: false,
+        dialogEditVisible: false,
       }
     },
     methods: {
@@ -73,9 +85,16 @@
       openDialog() {
         this.dialogVisible = true;
       },
+      openEditDialog() {
+        this.dialogEditVisible = true;
+      },
       createCard(card) {
         this.cards.unshift(card);
         this.dialogVisible = false;
+      },
+      editCard(card) {
+        this.cards.unshift(card);
+        this.dialogEditVisible = false;
       }
     },
     mounted() {

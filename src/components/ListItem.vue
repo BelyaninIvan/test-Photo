@@ -1,6 +1,7 @@
 <template>
   <li class="list__item item">
     <button class="del-button" @click="$emit('delete', itemObj)"></button>
+    <button class="edit-button" @click="$emit('openEditDialog', itemObj)"></button>
     <h3 class="item__title">{{ itemObj.title }}</h3>
     <p class="item__category"> Категория: <span>{{ itemObj.category }}</span></p>
     <img class="item__image" :src="itemObj.image" alt="Картинка">
@@ -46,7 +47,7 @@ export default {
     row-gap: 10px;
   }
 
-  .del-button {
+  .del-button, .edit-button {
     margin: 0;
     padding: 0;
     width: 24px;
@@ -62,6 +63,13 @@ export default {
     top: 10px;
     right: 15px;
     transition: all ease-in .6s;
+  }
+
+  .edit-button {
+    background-image: url('../assets/pencil.png');
+    position: absolute;
+    top: 10px;
+    right: 50px;
   }
 
   .del-button:hover {

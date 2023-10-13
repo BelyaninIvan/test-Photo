@@ -42,33 +42,37 @@
       name="rate" 
       placeholder="Оценка отзывов"  
     />
-    <button class="button" type="button" @click="createCard">
-        Создать карточку
+    <button class="button" type="button" @click="editCard">
+        Сохранить карточку
     </button>
   </form>
 </template>
 <script>
 export default {
-  name: 'CreateCardForm',
+  name: 'EditCardForm',
   data() {
     return {
       card: {
-        title: '',
-        category: '',
-        image: '',
-        description: '',
-        price: '',
+        title: 'Название',
+        category: 'Название',
+        image: 'Название',
+        description: 'Название',
+        price: 'Название',
         rating: {
-            count: '',
-            rate: '',
+            count: 'Название',
+            rate: 'Название',
         },
-      }
+      },
     }
   },
+  props: {
+    /* cardObj: {
+      type: Object,
+    } */
+  },
   methods: {
-    createCard() {
-      this.card.id = Date.now();
-      this.$emit('create', this.card);
+    editCard() {
+      this.$emit('edit', this.card);
       this.card = {
         title: '',
         category: '',
@@ -76,8 +80,8 @@ export default {
         description: '',
         price: '',
         rating: {
-            count: '',
-            rate: '',
+          count: '',
+          rate: '',
         },
       }
     }
