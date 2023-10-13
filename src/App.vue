@@ -4,6 +4,7 @@
       status="Новые"
       buttonText="Хочу купить"
       :cardsList="cards"
+      isAdd="true"
       @move="moveCard"
       @delete="deleteCard"
       @openDialog="openDialog"
@@ -43,6 +44,7 @@
   >
     <EditCardForm
       @edit="editCard"
+      :cardObj="activeCard"
     >
     </EditCardForm>
   </MyDialog>
@@ -66,6 +68,7 @@
         cards_buy: [],
         dialogVisible: false,
         dialogEditVisible: false,
+        activeCard: {},
       }
     },
     methods: {
@@ -85,7 +88,9 @@
       openDialog() {
         this.dialogVisible = true;
       },
-      openEditDialog() {
+      openEditDialog(card) {
+        this.activeCard = card;
+        this.cards = this.cards.filter(c => c.id != card.id);
         this.dialogEditVisible = true;
       },
       createCard(card) {
@@ -104,7 +109,6 @@
             this.cards.push(element);
         });
       })
-      console.log(this.cards);
     }
   }
 </script>

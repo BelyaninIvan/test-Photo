@@ -53,22 +53,22 @@ export default {
   data() {
     return {
       card: {
-        title: 'Название',
-        category: 'Название',
-        image: 'Название',
-        description: 'Название',
-        price: 'Название',
+        title: this.cardObj.title,
+        category: this.cardObj.category,
+        image: this.cardObj.image,
+        description: this.cardObj.description,
+        price: this.cardObj.price,
         rating: {
-            count: 'Название',
-            rate: 'Название',
+            count: this.cardObj.rating.count,
+            rate: this.cardObj.rating.rate,
         },
       },
     }
   },
   props: {
-    /* cardObj: {
+    cardObj: {
       type: Object,
-    } */
+    }
   },
   methods: {
     editCard() {

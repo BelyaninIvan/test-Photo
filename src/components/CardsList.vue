@@ -1,6 +1,6 @@
 <template>
   <ul class="list">
-    <button class="add-button" @click="$emit('openDialog')"></button>
+    <button :class="{ button_hide: !isAdd }" class="add-button" @click="$emit('openDialog')"></button>
     <h2 class="list__title">{{ status }} 
       <span class="list__title-span">{{ cardsList.length }}</span>
     </h2>
@@ -11,7 +11,7 @@
       :itemObj="card"
       @move="$emit('move', card)"
       @delete="$emit('delete', card)"
-      @openEditDialog="$emit('openEditDialog', itemObj)"
+      @openEditDialog="$emit('openEditDialog', card)"
       :buttonText="buttonText"
       :isHide="isHide"
     >
@@ -44,6 +44,10 @@ export default {
       default: null
     },
     isHide: {
+      type: Boolean,
+      default: false
+    },
+    isAdd: {
       type: Boolean,
       default: false
     }
@@ -115,5 +119,9 @@ export default {
 
   .add-button:hover {
     opacity: .8;
+  }
+
+  .button_hide {
+    display: none;
   }
 </style>
