@@ -30,24 +30,26 @@
     </CardsList>
   </main>
 
-  <MyDialog
-    :show="dialogVisible"
-  >
-    <CreateCardForm
-      @create="createCard"
+  <section>
+    <MyDialog
+      v-model:show="dialogVisible"
     >
-    </CreateCardForm>
-  </MyDialog>
-  
-  <MyDialog
-    :show="dialogEditVisible"
-  >
-    <EditCardForm
-      @edit="editCard"
-      :cardObj="activeCard"
+      <CreateCardForm
+        @create="createCard"
+      >
+      </CreateCardForm>
+    </MyDialog>
+    
+    <MyDialog
+      v-model:show="dialogEditVisible"
     >
-    </EditCardForm>
-  </MyDialog>
+      <EditCardForm
+        @edit="editCard"
+        :cardObj="activeCard"
+      >
+      </EditCardForm>
+    </MyDialog>
+  </section>
 </template>
 
 <script>

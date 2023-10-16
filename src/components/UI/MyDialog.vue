@@ -1,26 +1,32 @@
 <template>
-    <div class="modal" v-if="show === true" @click.stop="hideDialog">
-        <div @click.stop class="modal__content">
-            <slot></slot>
-        </div>
+  <div 
+    class="modal" 
+    v-if="show === true" 
+    @click.stop="hideDialog">
+    <div 
+      @click.stop
+      class="modal__content"
+    >
+      <slot></slot>
     </div>
+  </div>
 </template>
 
 <script>
-  export default {
-    name: 'MyDialog',
-    props: {
-      show: {
-        type: Boolean,
-        default: false
-      }
-    },
-    methods: {
-      hideDialog() {
-        this.$emit('update:show', false)
-      }
+export default {
+  name: 'MyDialog',
+  props: {
+    show: {
+      type: Boolean,
+      default: false,
+    }
+  },
+  methods: {
+    hideDialog() {
+      this.$emit('update:show', false);
     }
   }
+}
 </script>
 
 <style scoped>
